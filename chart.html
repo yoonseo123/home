@@ -1,0 +1,52 @@
+<html>
+<head>
+</head>
+<body>
+<h1>chart예제</h1>
+<div style =" width:95vw">
+    <canvas id="myChart"></canvas>
+</div>
+<div>
+     <button onclick='settype("line")'>라인</button> 
+     <button onclick='settype("pie")'>파이</button>
+     <button onclick='settype("doughnut")'>도넛</button>  
+     <button onclick='settype("bar")'>바</button>
+     <button onclick='adddata()'>추가</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const labels = [ 'January','February', 'March', 'April', 'May', 'June', 'July' ];
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'ㅋㅋㅋㅋ',
+      backgroundColor: 'rgb(153,204, 255)',
+      borderColor: 'rgb(102,102, 153)',
+      data: [5, 10, 25, 20, 45, 50, 55],
+    }]
+  };
+
+  const config = {
+    type: 'bar', //'pie', 'doughnut' , 'line'
+    data: data,
+    options: {}
+  };
+</script>
+<script>
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+  function settype(t) {
+      config.type = t
+      myChart.update()
+}
+  function adddata()  {
+     data.datasets[0].data.push(Math.floor(Math.random()*100))
+     data.labels.push("new data")
+      myChart.update()
+ }
+</script>
+</body>
+      myChart.update()
